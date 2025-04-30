@@ -39,9 +39,11 @@ function containsChinese(text) {
 function processText(text) {
   if (!text) return [];
   
-  // Trim the text and return it as a single entry regardless of language
+  // Remove leading/trailing whitespace but preserve internal spaces
   const trimmedText = text.trim();
-  return trimmedText ? [trimmedText] : [];
+  
+  // Return the entire text as a single entry, preserving internal spaces
+  return trimmedText ? [trimmedText.replace(/\s+/g, ' ')] : [];
 }
 
 // API Routes
