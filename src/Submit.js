@@ -47,6 +47,7 @@ function Submit() {
   return (
     <div className="submit-container">
       <h2>Submit Your Text</h2>
+      <p className="instruction-text">請輸入中文。請勿輸入任何空格。</p>
       <form onSubmit={handleSubmit}>
         <textarea
           value={text}
