@@ -5,7 +5,11 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.RENDER_EXTERNAL_URL 
+    : ['http://localhost:3000', 'http://192.168.88.222:3000']
+}));
 
 // Serve static files from the React app in production
 app.use(express.static(path.join(__dirname, 'build')));
@@ -14,7 +18,9 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: process.env.NODE_ENV === 'production'
+      ? process.env.RENDER_EXTERNAL_URL
+      : ['http://localhost:3000', 'http://192.168.88.222:3000'],
     methods: ["GET", "POST"]
   }
 });
@@ -71,4 +77,7 @@ const HOST = '0.0.0.0';
 
 server.listen(PORT, HOST, () => {
   console.log(`Server running on http://${HOST}:${PORT}`);
+  if (process.env.RENDER_EXTERNAL_URL) {
+    console.log(`Application available at: ${process.env.RENDER_EXTERNAL_URL}`);
+  }
 }); 
