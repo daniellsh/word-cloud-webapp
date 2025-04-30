@@ -30,6 +30,24 @@ const io = new Server(server, {
 
 let submissions = [];
 
+// Helper function to detect if text contains Chinese characters
+function containsChinese(text) {
+  return /[\u4E00-\u9FFF]/.test(text);
+}
+
+// Helper function to process text based on language
+function processText(text) {
+  if (!text) return [];
+  
+  // If text contains Chinese characters, treat the whole text as one entry
+  if (containsChinese(text)) {
+    return [text.trim()];
+  }
+  
+  // For English text, keep it as a complete phrase
+  return [text.trim()];
+}
+
 // API Routes
 app.get('/api/health', (req, res) => {
   res.send('Word Cloud Server Running');
@@ -38,7 +56,8 @@ app.get('/api/health', (req, res) => {
 app.post('/api/submit', express.json(), (req, res) => {
   const { text } = req.body;
   if (text) {
-    submissions.push(text);
+    const processedText = processText(text);
+    submissions.push(...processedText);
     io.emit('submissions-updated', submissions);
     res.json({ success: true });
   } else {
@@ -52,9 +71,10 @@ io.on('connection', (socket) => {
 
   socket.on('submit-text', (text) => {
     if (typeof text === 'string' && text.trim()) {
-      submissions.push(text.trim());
+      const processedText = processText(text);
+      submissions.push(...processedText);
       io.emit('submissions-updated', submissions);
-      console.log('New submission received:', text.trim());
+      console.log('New submission received:', processedText);
     }
   });
 
