@@ -46,19 +46,19 @@ function Submit() {
 
   return (
     <div className="submit-container">
-      <h2>Submit Your Text</h2>
-      <p className="instruction-text">請輸入中文。請勿輸入任何空格。</p>
+      <h2>Submit Your words<br />輸入你的生字</h2>
+      <p className="instruction-text">Enter vocabulary. If more than one vocabulary, enter space to seperate.<br />如輸入多於一組字詞，請以空白鍵作分隔。</p>
       <form onSubmit={handleSubmit}>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="Enter your text here..."
+          placeholder="Enter your text here... / 在此輸入生字⋯⋯"
           rows="4"
           className="submit-textarea"
         />
         {error && <div className="error-message">{error}</div>}
         <button type="submit" className="submit-button">
-          Submit
+          Submit / 提交
         </button>
       </form>
     </div>

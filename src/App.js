@@ -193,7 +193,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Interactive Word Cloud</h1>
+        <h1>Interactive Word Cloud<br />生字雲圖</h1>
         {error && (
           <div className="error-message">
             {error}
@@ -203,7 +203,7 @@ function App() {
           {!showWordCloud ? (
             <div className="qr-container">
               <QRCodeSVG value={submissionUrl} size={256} />
-              <p>Scan to submit your text!</p>
+              <p>Please scan to submit your words.<br />請掃描並輸入生字。</p>
             </div>
           ) : (
             <div className="wordcloud-container">
@@ -212,7 +212,7 @@ function App() {
           )}
         </div>
         <button onClick={handleGenerateClick} className="action-button">
-          {!showWordCloud ? 'Generate Word Cloud' : 'New Word Cloud'}
+          {!showWordCloud ? 'Generate | 開始生成' : 'Reset | 重新開始'}
         </button>
       </header>
     </div>
