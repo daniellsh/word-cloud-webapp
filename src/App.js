@@ -164,7 +164,7 @@ function App() {
     socket.on('submissions-updated', handleSubmissionsUpdate);
     socket.on('connect_error', (error) => {
       console.error('Socket connection error:', error);
-      setError('Connection error. Please try again.');
+      setError('Connection error. Please try reconnecting.');
     });
 
     return () => {

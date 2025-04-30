@@ -5,13 +5,16 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
+
+// Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? process.env.RENDER_EXTERNAL_URL 
     : ['http://localhost:3000', 'http://192.168.88.222:3000']
 }));
+app.use(express.json());
 
-// Serve static files from the React app in production
+// Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'build')));
 
 const server = http.createServer(app);
@@ -27,11 +30,12 @@ const io = new Server(server, {
 
 let submissions = [];
 
+// API Routes
 app.get('/api/health', (req, res) => {
   res.send('Word Cloud Server Running');
 });
 
-app.post('/submit', express.json(), (req, res) => {
+app.post('/api/submit', express.json(), (req, res) => {
   const { text } = req.body;
   if (text) {
     submissions.push(text);
@@ -42,6 +46,7 @@ app.post('/submit', express.json(), (req, res) => {
   }
 });
 
+// Socket.IO event handlers
 io.on('connection', (socket) => {
   console.log('Client connected');
 
@@ -67,8 +72,9 @@ io.on('connection', (socket) => {
   });
 });
 
-// Handle React routing, return all requests to React app
+// Serve React app for all other routes
 app.get('*', (req, res) => {
+  console.log('Serving index.html for path:', req.path);
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
