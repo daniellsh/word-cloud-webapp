@@ -39,13 +39,9 @@ function containsChinese(text) {
 function processText(text) {
   if (!text) return [];
   
-  // If text contains Chinese characters, treat the whole text as one entry
-  if (containsChinese(text)) {
-    return [text.trim()];
-  }
-  
-  // For English text, keep it as a complete phrase
-  return [text.trim()];
+  // Trim the text and return it as a single entry regardless of language
+  const trimmedText = text.trim();
+  return trimmedText ? [trimmedText] : [];
 }
 
 // API Routes
