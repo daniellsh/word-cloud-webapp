@@ -8,6 +8,7 @@
 }
 
 .submit-container {
+  width: 90%;
   max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
@@ -24,6 +25,8 @@
 
 .submit-textarea {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid #ddd;
@@ -75,4 +78,22 @@
 
 .success-message p {
   margin-bottom: 30px;
+}
+
+form {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .submit-container {
+    width: 95%;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+  
+  .submit-textarea {
+    padding: 0.8rem;
+    font-size: 16px;
+  }
 } 
