@@ -35,10 +35,10 @@ function Submit() {
   if (submitted) {
     return (
       <div className="submit-container">
-        <h2>Thank you for your submission!</h2>
-        <p>Your text has been added to the word cloud.</p>
+        <h2>Thank you for your submission!<br />謝謝參與！</h2>
+        <p>Your words has been added to the cloud.<br />你的生字已成功加到雲圖。</p>
         <button onClick={() => setSubmitted(false)} className="submit-button">
-          Submit Another
+          Submit Another / 繼續提交
         </button>
       </div>
     );
