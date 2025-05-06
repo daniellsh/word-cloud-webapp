@@ -36,7 +36,7 @@ function Submit() {
     return (
       <div className="submit-container">
         <h2>Thank you for your submission!<br />謝謝參與！</h2>
-        <p>Your answer has been added to the cloud.<br />你的生字已成功加到雲圖。</p>
+        <p>Your answer has been added to the cloud.<br />你的答案已成功加到雲圖。</p>
         <button onClick={() => setSubmitted(false)} className="submit-button">
           Submit Another / 繼續提交
         </button>
@@ -47,7 +47,7 @@ function Submit() {
   return (
     <div className="submit-container">
       <h2>Submit Your answer<br />輸入你的答案</h2>
-      <p className="instruction-text">Enter vocabulary. If more than one vocabulary, enter a space to seperate.<br />如輸入多於一個答案，請以空白鍵作分隔。</p>
+      <p className="instruction-text">Enter a single word as answer. Separate multiple answers with spaces.<br />輸入一個單字作為答案。如輸入多於一個答案，請以空白鍵作分隔。</p>
       <form onSubmit={handleSubmit}>
         <textarea
           value={text}
