@@ -47,7 +47,7 @@ function Submit() {
   return (
     <div className="submit-container">
       <h2>Submit Your answer<br />輸入你的答案</h2>
-      <p className="instruction-text">Enter a single word as answer. Separate multiple answers with spaces.<br />輸入一個單字作為答案。如輸入多於一個答案，請以空白鍵作分隔。</p>
+      <p className="instruction-text">Enter a single word as answer. Separate multiple answers with spaces.<br />輸入字詞作為答案。如輸入多於一個答案，請以空白鍵作分隔。</p>
       <form onSubmit={handleSubmit}>
         <textarea
           value={text}
