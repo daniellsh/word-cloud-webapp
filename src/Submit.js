@@ -45,8 +45,8 @@ function Submit() {
   }
 
   return (
-    <div className="submit-container">輸入你的答案
-      <h2>Submit Your answer<br /></h2>
+    <div className="submit-container">
+      <h2>Submit Your answer<br />輸入你的答案</h2>
       <p className="instruction-text">Enter vocabulary. If more than one vocabulary, enter a space to seperate.<br />如輸入多於一個答案，請以空白鍵作分隔。</p>
       <form onSubmit={handleSubmit}>
         <textarea
