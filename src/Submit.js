@@ -45,14 +45,14 @@ function Submit() {
   }
 
   return (
-    <div className="submit-container">
-      <h2>Submit Your words<br />輸入你的生字</h2>
-      <p className="instruction-text">Enter vocabulary. If more than one vocabulary, enter space to seperate.<br />如輸入多於一組字詞，請以空白鍵作分隔。</p>
+    <div className="submit-container">輸入你的答案
+      <h2>Submit Your words<br /></h2>
+      <p className="instruction-text">Enter vocabulary. If more than one vocabulary, enter space to seperate.<br />如輸入多於一個答案，請以空白鍵作分隔。</p>
       <form onSubmit={handleSubmit}>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="Enter your text here... / 在此輸入生字⋯⋯"
+          placeholder="Enter your text here... / 在此輸入答案⋯⋯"
           rows="4"
           className="submit-textarea"
         />
