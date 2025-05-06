@@ -203,7 +203,7 @@ function App() {
           {!showWordCloud ? (
             <div className="qr-container">
               <QRCodeSVG value={submissionUrl} size={256} />
-              <p>Please scan to submit your words.<br />請掃描並輸入答案。</p>
+              <p>Please scan to submit your answer.<br />請掃描並輸入答案。</p>
             </div>
           ) : (
             <div className="wordcloud-container">
