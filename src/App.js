@@ -193,7 +193,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Interactive Word Cloud<br />雲圖</h1>
+        <h1>Interactive Word Cloud<br />答案雲圖</h1>
         {error && (
           <div className="error-message">
             {error}
